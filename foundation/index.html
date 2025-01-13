@@ -1,0 +1,985 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Self-guided workshop to learn about Particle Physics, ATLAS Experiment and Coding">
+      
+      
+        <meta name="author" content="Hamza Hanif">
+      
+      
+      
+        <link rel="prev" href="../intro_to_histos/">
+      
+      
+        <link rel="next" href="../lhc/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+    
+    
+      
+        <title>Foundation of Particle Physics - Data Science through ATLAS Open Data</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#foundations-of-particle-physics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Data Science through ATLAS Open Data" class="md-header__button md-logo" aria-label="Data Science through ATLAS Open Data" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Science through ATLAS Open Data
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Foundation of Particle Physics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Science through ATLAS Open Data" class="md-nav__button md-logo" aria-label="Data Science through ATLAS Open Data" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Data Science through ATLAS Open Data
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Coding in Python (Optional)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_histos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Histogramming (Optional)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Foundation of Particle Physics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Foundation of Particle Physics
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-building-blocks-of-matter-fermions" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Building Blocks of Matter (Fermions)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Building Blocks of Matter (Fermions)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quarks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leptons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leptons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fermions-and-the-universe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fermions and the Universe
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-forces-of-nature-bosons" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Forces of Nature (Bosons)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Forces of Nature (Bosons)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-photon-electromagnetic-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Photon (Electromagnetic Force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gluon-strong-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Gluon (Strong Force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-w-and-z-bosons-weak-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      The W and Z Bosons (Weak Force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-higgs-boson-mass-and-the-higgs-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Higgs Boson (Mass and the Higgs Field)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-graviton-gravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Graviton? (Gravity)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bosons-and-the-universe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bosons and the Universe:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-dont-know-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We Don’t Know Yet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We Don’t Know Yet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dark-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dark Matter:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dark-energy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dark Energy:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gravity-and-the-graviton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gravity and the Graviton:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matter-antimatter-asymmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matter-Antimatter Asymmetry:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutrino-mass-and-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neutrino Mass and Behavior:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-physics-beyond-the-standard-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Physics Beyond the Standard Model:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lhc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large Hadron Collider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../z_n_h/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro to finding Z & Higgs bosons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../z1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finding the Z boson mass - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../z2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finding the Z boson mass - Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Searching for the Higgs boson - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Searching for the Higgs boson - Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-building-blocks-of-matter-fermions" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Building Blocks of Matter (Fermions)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Building Blocks of Matter (Fermions)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quarks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leptons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leptons
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fermions-and-the-universe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fermions and the Universe
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-forces-of-nature-bosons" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Forces of Nature (Bosons)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Forces of Nature (Bosons)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-photon-electromagnetic-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Photon (Electromagnetic Force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-gluon-strong-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Gluon (Strong Force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-w-and-z-bosons-weak-force" class="md-nav__link">
+    <span class="md-ellipsis">
+      The W and Z Bosons (Weak Force)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-higgs-boson-mass-and-the-higgs-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Higgs Boson (Mass and the Higgs Field)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-graviton-gravity" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Graviton? (Gravity)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bosons-and-the-universe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bosons and the Universe:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-we-dont-know-yet" class="md-nav__link">
+    <span class="md-ellipsis">
+      What We Don’t Know Yet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What We Don’t Know Yet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dark-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dark Matter:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dark-energy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dark Energy:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gravity-and-the-graviton" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gravity and the Graviton:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matter-antimatter-asymmetry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matter-Antimatter Asymmetry:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neutrino-mass-and-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Neutrino Mass and Behavior:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-physics-beyond-the-standard-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Physics Beyond the Standard Model:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="foundations-of-particle-physics">Foundations of Particle Physics<a class="headerlink" href="#foundations-of-particle-physics" title="Permanent link">#</a></h1>
+<p>Welcome to the Foundations of Particle Physics section! This is where we introduce you to the fundamental ideas behind particle physics, focusing on the Standard Model (SM), which describes how everything in the universe is built from a few elementary particles. These particles fall into two main categories: fermions, which make up matter, and bosons, which mediate forces between particles.</p>
+<ol>
+<li>
+<p><strong>The Building Blocks of Matter (Fermions)</strong>: In this tab, we’ll explore fermions—particles that form all matter in the universe. These include quarks and leptons, the particles that combine to form protons, neutrons, electrons, and other fundamental building blocks of matter.</p>
+</li>
+<li>
+<p><strong>The Forces of Nature (Bosons)</strong>: Here, we’ll look at bosons, the particles responsible for mediating forces between fermions. These include the photon (responsible for electromagnetism), the W and Z bosons (weak force), and the gluon (strong force), as well as the famous Higgs boson, which gives mass to particles.</p>
+</li>
+<li>
+<p><strong>What We Don’t Know Yet (The Unkowns)</strong>: While the Standard Model explains a lot, there are still many unanswered questions. This tab will discuss some of the big mysteries, such as dark matter, dark energy, and why gravity doesn’t fit into the Standard Model. We’ll also touch on what scientists are currently doing to expand our understanding of these unknowns.</p>
+</li>
+</ol>
+<h2 id="the-building-blocks-of-matter-fermions">The Building Blocks of Matter (Fermions)<a class="headerlink" href="#the-building-blocks-of-matter-fermions" title="Permanent link">#</a></h2>
+<p>Fermions are the particles that make up all the matter in the universe. In the Standard Model, these are divided into two main families: <strong>quarks</strong> and <strong>leptons</strong>.</p>
+<h3 id="quarks">Quarks<a class="headerlink" href="#quarks" title="Permanent link">#</a></h3>
+<p>Quarks are never found in isolation; instead, they group together to form larger particles like protons and neutrons, which make up the atomic nucleus. There are six types (or “flavors”) of quarks: up, down, charm, strange, top, and bottom. The up and down quarks are the most common and make up protons (two up quarks, one down) and neutrons (two down quarks, one up).</p>
+<p>The other quark flavors—charm, strange, top, and bottom—are heavier and appear only in high-energy environments, such as in particle accelerators like the Large Hadron Collider (LHC).</p>
+<h3 id="leptons">Leptons<a class="headerlink" href="#leptons" title="Permanent link">#</a></h3>
+<p>Leptons are the other half of the matter family. Unlike quarks, leptons can exist on their own and are not confined within larger particles. The most familiar lepton is the electron, which orbits the nucleus of atoms. Along with the electron, there are two heavier charged leptons: the muon and the tau, both of which are unstable and decay quickly after being created in high-energy processes.</p>
+<p>Each charged lepton also has a neutral partner called a neutrino. Neutrinos are incredibly light and interact very weakly with matter, making them difficult to detect. There are three types of neutrinos, one for each charged lepton: the electron neutrino, the muon neutrino, and the tau neutrino.</p>
+<h3 id="fermions-and-the-universe">Fermions and the Universe<a class="headerlink" href="#fermions-and-the-universe" title="Permanent link">#</a></h3>
+<p>Fermions follow the Pauli Exclusion Principle, meaning no two fermions can occupy the same quantum state simultaneously. This property is what gives matter its structure, preventing everything from collapsing into a dense, single point.</p>
+<p>Together, quarks and leptons form the foundation of all visible matter, from the atoms in our bodies to the stars in the sky. But fermions are just one part of the story—next, we’ll explore the forces that act between them, which are mediated by bosons.</p>
+<h2 id="the-forces-of-nature-bosons">The Forces of Nature (Bosons)<a class="headerlink" href="#the-forces-of-nature-bosons" title="Permanent link">#</a></h2>
+<p>Bosons are the particles responsible for mediating the fundamental forces of nature. In the Standard Model, they play a crucial role in allowing fermions (matter particles) to interact with one another. There are four fundamental forces in the universe, and each is associated with a specific boson or set of bosons.</p>
+<h3 id="the-photon-electromagnetic-force">The Photon (Electromagnetic Force)<a class="headerlink" href="#the-photon-electromagnetic-force" title="Permanent link">#</a></h3>
+<p>The photon is the boson that mediates the electromagnetic force. This force is responsible for the interactions between charged particles, such as electrons and protons. Photons are massless and travel at the speed of light, carrying electromagnetic radiation, which includes everything from visible light to X-rays and radio waves.</p>
+<h3 id="the-gluon-strong-force">The Gluon (Strong Force)<a class="headerlink" href="#the-gluon-strong-force" title="Permanent link">#</a></h3>
+<p>The gluon is the boson responsible for the strong force, which binds quarks together to form protons, neutrons, and other particles. This force is incredibly powerful but acts only over extremely short distances, within the nucleus of atoms. Gluons don’t just connect quarks—they also interact with each other, making the strong force highly complex.</p>
+<h3 id="the-w-and-z-bosons-weak-force">The W and Z Bosons (Weak Force)<a class="headerlink" href="#the-w-and-z-bosons-weak-force" title="Permanent link">#</a></h3>
+<p>The W and Z bosons are the mediators of the weak force, which is responsible for processes like radioactive decay and the fusion reactions that power the Sun. Unlike the photon and gluon, the W and Z bosons are massive, which is why the weak force is much weaker than the electromagnetic and strong forces and acts over shorter distances. The weak force plays a crucial role in the stability of atoms and the universe’s evolution.</p>
+<h3 id="the-higgs-boson-mass-and-the-higgs-field">The Higgs Boson (Mass and the Higgs Field)<a class="headerlink" href="#the-higgs-boson-mass-and-the-higgs-field" title="Permanent link">#</a></h3>
+<p>The Higgs boson is a special kind of boson that is associated with the Higgs field, a field that permeates the entire universe. When particles interact with the Higgs field, they acquire mass. The discovery of the Higgs boson in 2012 at the Large Hadron Collider (LHC) confirmed this theory, explaining how particles like the W and Z bosons—and even fermions like quarks and leptons—obtain their mass.</p>
+<h3 id="the-graviton-gravity">The Graviton? (Gravity)<a class="headerlink" href="#the-graviton-gravity" title="Permanent link">#</a></h3>
+<p>Gravity is the one force that the Standard Model does not fully explain. While a theoretical particle called the graviton is hypothesized to mediate the force of gravity, it has not yet been discovered, and gravity remains outside the framework of the Standard Model. Understanding how gravity fits into the picture remains one of the biggest challenges in physics today.</p>
+<h3 id="bosons-and-the-universe">Bosons and the Universe:<a class="headerlink" href="#bosons-and-the-universe" title="Permanent link">#</a></h3>
+<p>Without bosons, the fundamental forces that hold the universe together wouldn’t exist. They enable particles of matter to interact, govern the structure of atoms, and are responsible for everything from the light we see to the nuclear reactions that power stars. These interactions are key to understanding how the universe functions on both the smallest and largest scales.</p>
+<h2 id="what-we-dont-know-yet">What We Don’t Know Yet<a class="headerlink" href="#what-we-dont-know-yet" title="Permanent link">#</a></h2>
+<p>While the Standard Model of particle physics has been incredibly successful in explaining much of what we observe in the universe, there are still significant gaps in our understanding. Some phenomena can’t yet be explained by the particles and forces described in the Standard Model, leaving scientists with exciting mysteries to solve. Here are some of the biggest unknowns in particle physics:</p>
+<h3 id="dark-matter">Dark Matter:<a class="headerlink" href="#dark-matter" title="Permanent link">#</a></h3>
+<p>One of the greatest mysteries in modern physics is dark matter. Observations of galaxies and cosmic structures show that the majority of matter in the universe is "invisible"—it doesn’t emit, absorb, or reflect light, yet its gravitational effects are evident. This unseen substance is called dark matter. Despite indirect evidence, scientists have not yet identified what particles make up dark matter, and it does not seem to fit into the Standard Model. Many experiments are underway to try to detect these elusive particles.</p>
+<h3 id="dark-energy">Dark Energy:<a class="headerlink" href="#dark-energy" title="Permanent link">#</a></h3>
+<p>Even more mysterious than dark matter is dark energy, an unknown force driving the accelerated expansion of the universe. While dark matter accounts for about 27% of the universe’s energy content, dark energy makes up nearly 68%. It’s responsible for the increasing speed at which galaxies are moving away from each other, but its nature remains a complete mystery. Understanding dark energy is one of the biggest challenges in cosmology and particle physics.</p>
+<h3 id="gravity-and-the-graviton">Gravity and the Graviton:<a class="headerlink" href="#gravity-and-the-graviton" title="Permanent link">#</a></h3>
+<p>While the Standard Model explains three of the four fundamental forces—electromagnetism, the weak force, and the strong force—it does not account for gravity. In theory, gravity should be mediated by a particle called the graviton, but we have not yet observed this particle, and gravity doesn’t fit neatly into the framework of the Standard Model. Unifying gravity with the other forces of nature remains one of the most significant unsolved problems in physics.</p>
+<h3 id="matter-antimatter-asymmetry">Matter-Antimatter Asymmetry:<a class="headerlink" href="#matter-antimatter-asymmetry" title="Permanent link">#</a></h3>
+<p>The matter-antimatter asymmetry problem is another unresolved question. According to the Standard Model, the Big Bang should have created equal amounts of matter and antimatter. However, our universe is made almost entirely of matter, with very little antimatter observed. What caused this imbalance? Scientists are investigating various possibilities, including whether there are unknown interactions that favor matter over antimatter.</p>
+<h3 id="neutrino-mass-and-behavior">Neutrino Mass and Behavior:<a class="headerlink" href="#neutrino-mass-and-behavior" title="Permanent link">#</a></h3>
+<p>Neutrinos are some of the lightest and most elusive particles in the universe, and there is still much we don’t know about them. For example, while we know neutrinos have mass, the Standard Model doesn’t predict how they get it or why their masses are so small. Additionally, neutrinos have the peculiar ability to change from one type (or "flavor") to another—a process known as neutrino oscillation—but the full nature of these oscillations is still being explored.</p>
+<h3 id="new-physics-beyond-the-standard-model">New Physics Beyond the Standard Model:<a class="headerlink" href="#new-physics-beyond-the-standard-model" title="Permanent link">#</a></h3>
+<p>Many physicists believe that there is new physics beyond the Standard Model, waiting to be discovered. Whether it’s through the discovery of new particles, unknown forces, or the resolution of dark matter and dark energy, the future of particle physics is filled with potential breakthroughs. The Large Hadron Collider and other experiments are constantly pushing the boundaries of what we know, searching for clues to solve these great mysteries.</p>
+<hr />
+<p>These unknowns represent some of the most exciting frontiers in physics today, and solving them will likely require new ideas, experiments, and theories that go beyond the Standard Model. While we've learned a lot about the universe, there is still so much more to discover.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

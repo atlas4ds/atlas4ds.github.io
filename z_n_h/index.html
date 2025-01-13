@@ -1,0 +1,785 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Self-guided workshop to learn about Particle Physics, ATLAS Experiment and Coding">
+      
+      
+        <meta name="author" content="Hamza Hanif">
+      
+      
+      
+        <link rel="prev" href="../lhc/">
+      
+      
+        <link rel="next" href="../z1/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+    
+    
+      
+        <title>Intro to finding Z & Higgs bosons - Data Science through ATLAS Open Data</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intro-to-finding-z-higgs-bosons" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Data Science through ATLAS Open Data" class="md-header__button md-logo" aria-label="Data Science through ATLAS Open Data" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Data Science through ATLAS Open Data
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Intro to finding Z & Higgs bosons
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Data Science through ATLAS Open Data" class="md-nav__button md-logo" aria-label="Data Science through ATLAS Open Data" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Data Science through ATLAS Open Data
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_coding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Coding in Python (Optional)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro_to_histos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to Histogramming (Optional)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../foundation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Foundation of Particle Physics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lhc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Large Hadron Collider
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Intro to finding Z & Higgs bosons
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Intro to finding Z & Higgs bosons
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-z0z0-boson" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Z^0Z^0 boson
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#particle-identification-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle Identification - Signal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Particle Identification - Signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pile-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pile-up
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-can-we-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What can we do?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-higgs-boson" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Higgs boson
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Higgs boson">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#higgs-decays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Higgs Decays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../z1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finding the Z boson mass - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../z2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Finding the Z boson mass - Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Searching for the Higgs boson - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../h2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Searching for the Higgs boson - Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-z0z0-boson" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Z^0Z^0 boson
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#particle-identification-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle Identification - Signal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Particle Identification - Signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#background-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pile-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pile-up
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-can-we-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What can we do?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-higgs-boson" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Higgs boson
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Higgs boson">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#higgs-decays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Higgs Decays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="intro-to-finding-z-higgs-bosons">Intro to finding Z &amp; Higgs bosons<a class="headerlink" href="#intro-to-finding-z-higgs-bosons" title="Permanent link">#</a></h1>
+<p>Protons colliding at the LHC are made of quarks and gluons – these interact to
+create new particles </p>
+<p><img alt="Image 1: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.14.08%E2%80%AFPM.png" /></p>
+<h2 id="the-z0z0-boson">The <span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> boson<a class="headerlink" href="#the-z0z0-boson" title="Permanent link">#</a></h2>
+<p>Based on the information shown in the image, this appears to be describing the <span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> boson, which is a fundamental particle that mediates the weak nuclear force. Let me mark this down with proper formatting:
+<span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> Boson and Weak Nuclear Force</p>
+<p>The <span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> boson exchanges the weak nuclear force, alongside the <span class="arithmatex"><span class="MathJax_Preview">W^+</span><script type="math/tex">W^+</script></span> and <span class="arithmatex"><span class="MathJax_Preview">W^-</span><script type="math/tex">W^-</script></span> bosons
+It serves as the force carrier responsible for radioactive decay
+While similar to a 'heavy photon', it has the unique ability to interact with neutral particles like neutrinos
+Key characteristics that distinguish it from photons:</p>
+<ul>
+<li>Mass: 91 GeV</li>
+<li>Extremely short lifetime: <span class="arithmatex"><span class="MathJax_Preview">3\times 10^{-25}</span><script type="math/tex">3\times 10^{-25}</script></span> seconds</li>
+</ul>
+<p>This would be considered a neutral current carrier in weak interactions, as opposed to the charged current interactions mediated by the <span class="arithmatex"><span class="MathJax_Preview">W^+</span><script type="math/tex">W^+</script></span> and <span class="arithmatex"><span class="MathJax_Preview">W^-</span><script type="math/tex">W^-</script></span> bosons. The massive nature and incredibly short lifetime of the <span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> boson help explain why the weak nuclear force operates only at very short distances, unlike the electromagnetic force carried by the massless photon.</p>
+<p>The two easiest <span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> decays to see in ATLAS are:</p>
+<p><img alt="Image 2: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.14.00%E2%80%AFPM.png" /></p>
+<p>Both decay products are stable enough to see in the ATLAS detector</p>
+<h2 id="particle-identification-signal">Particle Identification - Signal<a class="headerlink" href="#particle-identification-signal" title="Permanent link">#</a></h2>
+<p>We can identify a particle based on the set of signals it leaves in ATLAS</p>
+<p><img alt="Image 4: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.13.55%E2%80%AFPM.png" /></p>
+<p>HOWEVER, other interactions can make our ‘signal events’ difficult to spot </p>
+<h3 id="background-events">Background Events<a class="headerlink" href="#background-events" title="Permanent link">#</a></h3>
+<ul>
+<li>When protons collide, all sorts of particles can be created, not just Higgs and <span class="arithmatex"><span class="MathJax_Preview">Z</span><script type="math/tex">Z</script></span></li>
+<li>Some of these can have similar decay products as our signal events</li>
+</ul>
+<p><img alt="Image 4: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.13.49%E2%80%AFPM.png" /></p>
+<h3 id="pile-up">Pile-up<a class="headerlink" href="#pile-up" title="Permanent link">#</a></h3>
+<ul>
+<li>The LHC collides protons in ‘bunches’ of 100000000000 (<span class="arithmatex"><span class="MathJax_Preview">1.1\times10^{11}</span><script type="math/tex">1.1\times10^{11}</script></span>) every25 ns</li>
+<li>Uninteresting events take place at the same time as something interesting</li>
+</ul>
+<p><img alt="Image 5: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.13.41%E2%80%AFPM.png" /></p>
+<h3 id="what-can-we-do">What can we do?<a class="headerlink" href="#what-can-we-do" title="Permanent link">#</a></h3>
+<p><img alt="Image 6: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.13.30%E2%80%AFPM.png" />
+Screenshot 2025-01-12 at 10.13.23 PM.png</p>
+<h2 id="the-higgs-boson">The Higgs boson<a class="headerlink" href="#the-higgs-boson" title="Permanent link">#</a></h2>
+<p>Final Standard Model particle to be discovered, in 2012 by ATLAS and CMS
+ - Couples to other particles to give the mass
+ - Very heavy: Mass = 125 GeV</p>
+<h3 id="higgs-decays">Higgs Decays<a class="headerlink" href="#higgs-decays" title="Permanent link">#</a></h3>
+<p>The two easiest Higgs decays to see in ATLAS are:</p>
+<p><img alt="Image 7: The LHC accelerator and the four detectors around it" src="../fig/Screenshot%202025-01-12%20at%2010.13.23%E2%80%AFPM.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Other decays e.g. H <span class="arithmatex"><span class="MathJax_Preview">\longrightarrow</span><script type="math/tex">\longrightarrow</script></span> bb are more common but also harder to spot – backgrounds!</p>
+</div>
+<p>We’ve found our leptons, but how do we know they’ve come from the Z of the Higgs?</p>
+<p><em>By using Invariant mass is a unique fingerprint for each particle!</em></p>
+<p>You may be familar with:</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">E = mc^2</span><script type="math/tex">E = mc^2</script></span> , with a more complete version look like this: <span class="arithmatex"><span class="MathJax_Preview">E = \sqrt{(pc)^2 + (m_0c^2)^2}</span><script type="math/tex">E = \sqrt{(pc)^2 + (m_0c^2)^2}</script></span>,</p>
+<p>where <span class="arithmatex"><span class="MathJax_Preview">p</span><script type="math/tex">p</script></span> is <em>momentum</em> and <span class="arithmatex"><span class="MathJax_Preview">m_0</span><script type="math/tex">m_0</script></span> is <em>invariant mass</em>.</p>
+<ul>
+<li>Invariant mass is conserved <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> total <span class="arithmatex"><span class="MathJax_Preview">m_0</span><script type="math/tex">m_0</script></span> of the decay products is the same as the particle which has decayed</li>
+<li>To reconstruct e.g. the <span class="arithmatex"><span class="MathJax_Preview">Z^0</span><script type="math/tex">Z^0</script></span> mass:<ol>
+<li>Sum the energy (E) of the decay leptons (measured in ECAL or muon
+spectrometer)</li>
+<li>Sum the momentum (p) of the decay leptons (tracker)</li>
+<li>Put results into formula above</li>
+</ol>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.indexes", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
